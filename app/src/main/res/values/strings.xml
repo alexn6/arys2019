@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LabARyS2019</string>
+    <string name="edtCita">Ingrese la cita</string>
+    <string name="edtAutor">Nombre del autor</string>
+    <string name="btnGuardar">Guardar</string>
+    <string name="btnGetCitas">Traer citas</string>
+    <string name="tvGetCita">Aca irian las citas recuperadas</string>
+    <string name="tvHeaderRanking">Lista de puntuaciones</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btnPuntuar">Calificar</string>
+    <string name="tvHeaderList">Seleccione un elemento para ver sus datos</string>
+    <string name="btnSaveCita">Guardar</string>
+    <string name="btnCancel">Cancelar</string>
+    <string name="tvTitleMainActivity">Administracion de citas</string>
+</resources>

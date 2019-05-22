@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:stretchColumns="1">
+    tools:context=".PuntuacionCitaActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:background="#128675"
+        android:padding="3dip"
+        android:text="Informacion de la cita" />
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tv_cita_act"
+            android:layout_column="0"
+            android:layout_marginRight="10dp"
+            android:padding="3dip"
+            android:text="Cita"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_column="1"
+            android:padding="3dip"
+            android:id="@+id/tv_cita_act_edit"
+            android:text="Aca va la cita aygbygs iusiuhd siuhd siuhd" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tv_autor_act"
+            android:layout_column="0"
+            android:layout_marginRight="10dp"
+            android:padding="3dip"
+            android:text="Autor"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_column="1"
+            android:gravity="left"
+            android:id="@+id/tv_autor_act_edit"
+            android:padding="3dip"
+            android:text="El autor" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tv_puntuacion_act"
+            android:layout_column="0"
+            android:layout_marginRight="10dp"
+            android:padding="3dip"
+            android:text="Puntuacion"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_column="1"
+            android:gravity="left"
+            android:id="@+id/tv_puntuacion_act_edit"
+            android:padding="3dip"
+            android:text="6" />
+    </TableRow>
+
+    <View
+        android:layout_height="2dip"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FF909090"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv_title_new_puntuacion"
+        android:background="#FFEB3B"
+        android:padding="3dip"
+        android:text="Calificar cita" />
+
+    <!--<TableRow>-->
+        <!--<TextView-->
+            <!--android:id="@+id/tv_new_puntuacion"-->
+            <!--android:layout_column="0"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:padding="3dip"-->
+            <!--android:text="Puntuacion" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/itn_puntuacion"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_column="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="number"-->
+            <!--android:maxEms="10"-->
+            <!--android:minEms="0"-->
+            <!--android:textSize="14sp" />-->
+    <!--</TableRow>-->
+
+    <!--nueva puntuacion-->
+    <LinearLayout
+        android:weightSum="8">
+
+        <TextView
+            android:id="@+id/tv_new_puntuacion"
+            android:padding="3dip"
+            android:text="Nueva puntuacion (1/10)"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginLeft="20dp" />
+
+        <EditText
+            android:id="@+id/itn_puntuacion"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:inputType="number"
+            android:maxEms="10"
+            android:minEms="0"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!--botones -->
+    <LinearLayout
+        android:weightSum="8">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="4"
+            android:text="Guardar" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="4"
+            android:onClick="finishActivity"
+            android:text="Cancelar" />
+    </LinearLayout>
+
+</TableLayout>
+
+<!--RelativeLay-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_columnWeight="6"-->
+    <!--tools:context=".PuntuacionCitaActivity">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_info_act"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="TextView" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cita_act"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/tv_info_act"-->
+    <!--android:layout_weight="3"-->
+    <!--android:text="TextView" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cita_act_edit"-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/tv_info_act"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_toRightOf="@id/tv_cita_act"-->
+    <!--android:layout_weight="3"-->
+    <!--android:text="TextView" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_autor_act"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/tv_cita_act"-->
+    <!--android:text="TextView" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_puntuacion_act"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/tv_autor_act"-->
+    <!--android:text="TextView" />-->

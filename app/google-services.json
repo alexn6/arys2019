@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1083111647184",
+    "firebase_url": "https://labarys2019.firebaseio.com",
+    "project_id": "labarys2019",
+    "storage_bucket": "labarys2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083111647184:android:918ad903e4a968db",
+        "android_client_info": {
+          "package_name": "com.example.labarys2019"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083111647184-ghiksuvumtgjvnssgq7frhgnhe72a5md.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.labarys2019",
+            "certificate_hash": "0d744790e3eebd88d1c5a82c04fe26093a6783f6"
+          }
+        },
+        {
+          "client_id": "1083111647184-gi53gnqq4a94v29mmvfifilqb1mv7gvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfUBXbk4Q965WNu7RalYsoyfuf-vlWE5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083111647184-gi53gnqq4a94v29mmvfifilqb1mv7gvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

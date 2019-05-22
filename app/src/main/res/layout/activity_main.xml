@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<!--<EditText-->
+    <!--android:id="@+id/et_cita"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="48dp"-->
+    <!--android:layout_marginLeft="48dp"-->
+    <!--android:layout_marginTop="48dp"-->
+    <!--android:ems="10"-->
+    <!--android:hint="@string/edtCita"-->
+    <!--android:inputType="textPersonName"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--<EditText-->
+    <!--android:id="@+id/et_autor"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="48dp"-->
+    <!--android:layout_marginLeft="48dp"-->
+    <!--android:layout_marginTop="36dp"-->
+    <!--android:ems="10"-->
+    <!--android:hint="@string/edtAutor"-->
+    <!--android:inputType="textPersonName"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/et_cita" />-->
+
+<!--<Button-->
+    <!--android:id="@+id/btn_guardar"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="64dp"-->
+    <!--android:layout_marginLeft="64dp"-->
+    <!--android:layout_marginTop="40dp"-->
+    <!--android:onClick="saveCitaInCollection"-->
+    <!--android:text="@string/btnGuardar"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/tv_get_citas"-->
+    <!--tools:text="@string/btnGuardar" />-->
+
+<!--<Button-->
+    <!--android:id="@+id/button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="64dp"-->
+    <!--android:layout_marginLeft="64dp"-->
+    <!--android:layout_marginTop="32dp"-->
+    <!--android:onClick="getAllCitas"-->
+    <!--android:text="@string/btnGetCitas"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btn_guardar" />-->
+
+<!--<TextView-->
+    <!--android:id="@+id/tv_get_citas"-->
+    <!--android:layout_width="293dp"-->
+    <!--android:layout_height="32dp"-->
+    <!--android:layout_marginStart="67dp"-->
+    <!--android:layout_marginLeft="67dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:text="@string/tvGetCita"-->
+    <!--android:textSize="18sp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/et_autor"-->
+    <!--tools:text="@string/tvGetCita" />-->
+
+<!--<Button-->
+    <!--android:id="@+id/btn_puntuacion"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="40dp"-->
+    <!--android:layout_marginEnd="30dp"-->
+    <!--android:layout_marginRight="30dp"-->
+    <!--android:onClick="passToPuntuacion"-->
+    <!--android:text="Puntuacion"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/tv_get_citas" />-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal"
+        android:text="@string/tvTitleMainActivity"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_to_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="120dp"
+        android:onClick="passToCreateCita"
+        android:text="Crear citas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btn_to_puntuar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:onClick="passToPuntuacion"
+        android:text="Puntuar citas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_to_create" />
+</android.support.constraint.ConstraintLayout>
