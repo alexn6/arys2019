@@ -39,4 +39,21 @@
         android:textColor="#39555252"
         tools:text="CEO" />
 
+    <!--<TextView-->
+        <!--android:id="@+id/tv_puntuacion"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tv_cita"-->
+        <!--android:layout_toLeftOf="@id/tv_autor"-->
+        <!--android:layout_marginStart="1dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginEnd="5dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:text="Puntuacion"-->
+        <!--android:textColor="#39555252"-->
+        <!--tools:text="CEO" />-->
+
 </RelativeLayout>

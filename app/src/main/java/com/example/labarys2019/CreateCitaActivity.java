@@ -22,14 +22,12 @@ public class CreateCitaActivity extends AppCompatActivity {
     public static final String AUTOR_KEY = "autor";
     public static final String DB_CLOUD = "cloudCitas";
 
-    private CollectionReference dbFirebase;
+//    private CollectionReference dbFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_cita);
-
-        dbFirebase = FirebaseFirestore.getInstance().collection(DB_CLOUD);
     }
 
     @Override
@@ -39,6 +37,7 @@ public class CreateCitaActivity extends AppCompatActivity {
 
     // guarda la cita ingresa en la db cloud
     public void saveCita(View view){
+        CollectionReference dbFirebase = FirebaseFirestore.getInstance().collection(DB_CLOUD);
         EditText etCita = findViewById(R.id.et_cita_create);
         EditText etAutor = findViewById(R.id.et_autor_create);
         String cita = etCita.getText().toString();

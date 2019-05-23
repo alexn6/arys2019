@@ -24,18 +24,10 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String CITA_KEY = "cita";
-    public static final String AUTOR_KEY = "autor";
-//    TextView tv_get_citas;
-
-//    private CollectionReference dbFirebase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        dbFirebase = FirebaseFirestore.getInstance().collection("cloudCitas");
-//        tv_get_citas = findViewById(R.id.tv_get_citas);
     }
 
     @Override
@@ -90,11 +82,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-
-    // deberia mostrar los datos recuperados de la db cloud en una lista
-    public void showDataInList(){
-
-    }
 
     public void passToPuntuacion(View view){
         Intent toPuntuacion = new Intent(this, ListCitasActivity.class);

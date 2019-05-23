@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 public class PuntuacionCitaActivity extends AppCompatActivity {
 
-    private Lead objectInfo;
+//    private Lead objectInfo;
+    private InfoCita objectInfo;
     private TextView tvCita, tvAutor, tvPuntuacion;
     private EditText etPuntuacion;
 
@@ -21,19 +22,24 @@ public class PuntuacionCitaActivity extends AppCompatActivity {
         etPuntuacion = findViewById(R.id.itn_puntuacion);
         etPuntuacion.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "10")});
 
-        objectInfo = (Lead)getIntent().getSerializableExtra("CITA_SELECTED");
+//        objectInfo = (Lead)getIntent().getSerializableExtra("CITA_SELECTED");
+        objectInfo = (InfoCita)getIntent().getSerializableExtra("CITA_SELECTED");
         showInfoCita(objectInfo);
 
     }
 
-    private void showInfoCita(Lead objectInfo) {
+//    private void showInfoCita(Lead objectInfo) {
+private void showInfoCita(InfoCita objectInfo) {
         tvCita = findViewById(R.id.tv_cita_act_edit);
         tvAutor = findViewById(R.id.tv_autor_act_edit);
         tvPuntuacion = findViewById(R.id.tv_puntuacion_act_edit);
 
-        tvCita.setText(objectInfo.getName());
-        tvAutor.setText(objectInfo.getCompany());
-        tvPuntuacion.setText(objectInfo.getTitle());
+//        tvCita.setText(objectInfo.getName());
+//        tvAutor.setText(objectInfo.getCompany());
+//        tvPuntuacion.setText(objectInfo.getTitle());
+        tvCita.setText(objectInfo.getCita());
+        tvAutor.setText(objectInfo.getAutor());
+        tvPuntuacion.setText(""+(objectInfo.getAcumulado()/objectInfo.getPuntuaciones()));
     }
 
     // debe actualizar la puntuacion de la cita
