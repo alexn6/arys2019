@@ -2,7 +2,6 @@ package com.example.labarys2019;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -24,7 +21,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -52,7 +48,7 @@ public class FragCita extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    //adaptador
+    // referencia a la lista de citas
     ListView refListCitas;
 
     public FragCita() {
@@ -94,13 +90,10 @@ public class FragCita extends Fragment {
         View viewMain = inflater.inflate(R.layout.fragment_frag_cita, container, false);
         refListCitas = viewMain.findViewById(R.id.lvCitas);   // Instancia del ListView.
 
-        // produccion
-//        adapterDataListCustom(viewMain);
-//        listenListCitas();
-
+        // mostramos las citas en una lista
         showCitasDbCloud();
+        // ponemos a escuchar todos los elementos de la lista
         listenListCitas();
-
 
 //        return inflater.inflate(R.layout.fragment_frag_cita, container, false);
         return viewMain;
@@ -158,7 +151,6 @@ public class FragCita extends Fragment {
                 List<InfoCita> citasDb = new ArrayList<>();
                 if (task.isSuccessful()) {
                     InfoCita cita;
-                    ObjectMapper mapper = new ObjectMapper();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         msgInfo += " " + document.getId() + " => " + document.getData() + "\n";
                         cita = document.toObject(InfoCita.class);
@@ -166,65 +158,21 @@ public class FragCita extends Fragment {
                     }
                     // acomodamos los datos para mostrarlos en la lista
                     adapterDataListCitas(citasDb);
-//                    AdapterCita adapterCustom  = new AdapterCita(getActivity(), data);
-//                    refListCitas.setAdapter(adapterCustom);       //Relacionando la lista con el adaptador
                 } else {
                     msgInfo += "Error getting documents: " + task.getException();
+                    Toast.makeText(getContext(), msgInfo, Toast.LENGTH_SHORT).show();
                 }
-//                Toast.makeText(getContext(), "Recuperando datos: " + msgInfo, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getContext(), "Recuperando datos objects: " + citasDb.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-//    public void adapterDataListCustom(View viewMain){
-//        refListCitas = viewMain.findViewById(R.id.lvCitas);   // Instancia del ListView.
-//        AdapterCita adapterCustom  = new AdapterCita(getActivity(), LeadsRepository.getInstance().getLeads());
-//        refListCitas.setAdapter(adapterCustom);       //Relacionando la lista con el adaptador
-//
-//    }
 
     private void adapterDataListCitas(List<InfoCita> data){
         AdapterCita adapterCustom  = new AdapterCita(getActivity(), data);
         refListCitas.setAdapter(adapterCustom);       //Relacionando la lista con el adaptador
     }
 
-//    public void getAllCitas(){
-//        CollectionReference dbFirebase = FirebaseFirestore.getInstance().collection(DB_CLOUD);
-//
-//        dbFirebase.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                String msgInfo = "";
-//                Collection<InfoCita> citasDb = new ArrayList<>();
-//                if (task.isSuccessful()) {
-//                    InfoCita cita;
-//                    ObjectMapper mapper = new ObjectMapper();
-//                    for (QueryDocumentSnapshot document : task.getResult()) {
-//                        msgInfo += " " + document.getId() + " => " + document.getData() + "\n";
-//                        cita = document.toObject(InfoCita.class);
-//                        citasDb.add(cita);
-//                    }
-//                } else {
-//                    msgInfo += "Error getting documents: " + task.getException();
-//                }
-//                Toast.makeText(getContext(), "Recuperando datos: " + msgInfo, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), "Recuperando datos objects: " + citasDb.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-    // ponemos a escuchar todos los elementos de la lista
-//    private void listenListCitas() {
-//        refListCitas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Lead itemSelected = (Lead)refListCitas.getItemAtPosition(position);
-//                passToPuntuacion(itemSelected);
-//            }
-//        });
-//    }
-
+    // ponemos a la escucha la lista
     private void listenListCitas() {
         refListCitas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -235,10 +183,10 @@ public class FragCita extends Fragment {
         });
     }
 
-//    private void passToPuntuacion(Lead object){
+
     private void passToPuntuacion(InfoCita dataCita){
         Intent toPuntuacion = new Intent(getActivity(), PuntuacionCitaActivity.class);
-//        toPuntuacion.putExtra("CITA_SELECTED",object);
+        // pasamos al activity el elemento seleccionado
         toPuntuacion.putExtra("CITA_SELECTED",dataCita);
         startActivity(toPuntuacion);
     }

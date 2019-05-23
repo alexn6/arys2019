@@ -10,12 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-//public class AdapterCita extends ArrayAdapter<Lead> {
 public class AdapterCita extends ArrayAdapter<InfoCita> {
 
-//    public  AdapterCita(Context context, List<Lead> objects) {
-//        super(context, 0, objects);
-//    }
     public  AdapterCita(Context context, List<InfoCita> objects) {
         super(context, 0, objects);
     }
@@ -39,17 +35,11 @@ public class AdapterCita extends ArrayAdapter<InfoCita> {
         TextView autor = convertView.findViewById(R.id.tv_autor);
 
 
-//        // Lead actual.
-//        Lead lead = getItem(position);
-//
-//        cita.setText(lead.getName());
-//        autor.setText(lead.getCompany());
-        // Lead actual.
+        // cita seleccionada
         InfoCita dataCita = getItem(position);
 
         cita.setText(dataCita.getCita());
         autor.setText(dataCita.getAutor());
-
 
         return convertView;
     }

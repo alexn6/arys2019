@@ -20,9 +20,10 @@ public class CreateCitaActivity extends AppCompatActivity {
 
     public static final String CITA_KEY = "cita";
     public static final String AUTOR_KEY = "autor";
+    public static final String PUNTUACIONES_KEY = "puntuaciones";
+    public static final String ACUMULADO_KEY = "acumulado";
     public static final String DB_CLOUD = "cloudCitas";
 
-//    private CollectionReference dbFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,9 @@ public class CreateCitaActivity extends AppCompatActivity {
         Map<String, Object> dataToSave = new HashMap<>();
         dataToSave.put(CITA_KEY, cita);
         dataToSave.put(AUTOR_KEY, autor);
+        // cambiar esto
+        dataToSave.put(PUNTUACIONES_KEY, 1);
+        dataToSave.put(ACUMULADO_KEY, 5);
 
         // agregar los datos a una coleccion en la db cloud
         dbFirebase.add(dataToSave)
