@@ -61,7 +61,8 @@ public class CreateCitaActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getApplicationContext(), "El documento ha sido guardado con ID: "+ documentReference.getId(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "El documento ha sido guardado con exito ", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -70,6 +71,7 @@ public class CreateCitaActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Error al guardar el documento" +e, Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
 
     // finalizamos el activity

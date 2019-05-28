@@ -112,6 +112,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="15dp"
             android:layout_weight="4"
+            android:onClick="updatePuntuacion"
             android:text="Guardar" />
 
         <Button
