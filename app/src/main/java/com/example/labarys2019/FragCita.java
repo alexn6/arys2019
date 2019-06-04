@@ -2,9 +2,12 @@ package com.example.labarys2019;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +19,10 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -123,6 +129,13 @@ public class FragCita extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        actualizarListCitas();
+    }
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -165,6 +178,7 @@ public class FragCita extends Fragment {
 //                Toast.makeText(getContext(), "Recuperando datos objects: " + citasDb.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void adapterDataListCitas(List<InfoCita> data){
@@ -183,11 +197,42 @@ public class FragCita extends Fragment {
         });
     }
 
+    private void actualizarListCitas() {
+        SharedPreferences sp = getActivity().getSharedPreferences("DATA_CITA_DELETE", 0);
+        String autorCitaDelete = sp.getString("autor_del", "SIN_AUTOR");
+        String citaDelete = sp.getString("cita_del", "SIN_CITA");
+        if((!autorCitaDelete.equals("SIN_AUTOR")) && (!citaDelete.equals("SIN_CITA"))){
+            // intentamos eliminar el dato de la lista
+            deleteItemList(citaDelete, autorCitaDelete);
+//            Toast.makeText(getContext(), "Datos eliminados desde fragment: " + autorCitaDelete+ " , " +citaDelete, Toast.LENGTH_LONG).show();
+            SharedPreferences.Editor editor = sp.edit();
+            editor.remove("cita_del");
+            editor.remove("autor_del");
+            editor.commit();
+        }
+    }
+
+    private void deleteItemList(String citaDeleted, String autorDeleted){
+        // intentamos actualizar los cambios en la lista
+        AdapterCita adapterListCurrent = (AdapterCita) refListCitas.getAdapter();
+
+        InfoCita citaToDelete;
+//        Toast.makeText(getContext(), "A: "+autorDeleted+" , C: "+citaDeleted+" Nro: "+adapterListCurrent.getCount(), Toast.LENGTH_LONG).show();
+        for(int i=0 ; i < adapterListCurrent.getCount() ; i++){
+            citaToDelete = adapterListCurrent.getItem(i);
+            if((citaToDelete.getCita().equals(citaDeleted)) && (citaToDelete.getAutor().equals(autorDeleted))){
+                adapterListCurrent.remove(citaToDelete);
+//                Toast.makeText(getContext(), "Encontro la cita eliminada", Toast.LENGTH_LONG).show();
+            }
+        }
+        adapterListCurrent.notifyDataSetChanged();
+    }
 
     private void passToPuntuacion(InfoCita dataCita){
-        Intent toPuntuacion = new Intent(getActivity(), PuntuacionCitaActivity.class);
+        Intent toPuntuacion = new Intent(getContext(), PuntuacionCitaActivity.class);
         // pasamos al activity el elemento seleccionado
         toPuntuacion.putExtra("CITA_SELECTED",dataCita);
+        // starting new activity
         startActivity(toPuntuacion);
     }
 }

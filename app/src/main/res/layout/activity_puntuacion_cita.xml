@@ -126,4 +126,31 @@
             android:text="Cancelar" />
     </LinearLayout>
 
+    <View
+        android:layout_height="2dip"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FF909090"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv_title_delete"
+        android:background="#F44336"
+        android:padding="3dip"
+        android:text="Eliminar datos de la cita" />
+
+    <FrameLayout android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:onClick="deleteCita"
+            android:text="Borrar datos"
+            android:textAlignment="center" />
+    </FrameLayout>
+
 </TableLayout>

@@ -1,5 +1,8 @@
 package com.example.labarys2019;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -98,12 +103,60 @@ public class PuntuacionCitaActivity extends AppCompatActivity {
 
     }
 
+    // debe actualizar la puntuacion de la cita
+    public void deleteCita(View view){
+        // buscamos el dato en la db
+        final CollectionReference dbFirebase = FirebaseFirestore.getInstance().collection(DB_CLOUD);
+        // Create a query against the collection.
+        Query query = dbFirebase.whereEqualTo(CITA_KEY, infoCitaSelected.getCita()).whereEqualTo(AUTOR_KEY, infoCitaSelected.getAutor());
+
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                String idCita = "";
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        msgInfo += " " + document.getId() + " => " + document.getData() + "\n";
+                        idCita = document.getId();
+                    }
+                    dbFirebase.document(idCita).delete()
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    // aca deberia actualizar la info de la cita en la vista
+                                    Toast.makeText(getApplicationContext(), "Datos eliminados con exito", Toast.LENGTH_SHORT).show();
+                                    //Starting the previous Intent
+//                                    Intent dataToUpdateList = new Intent();
+//                                    //Sending the data to Activity_A
+//                                    dataToUpdateList.putExtra(CITA_KEY, infoCitaSelected.getCita());
+//                                    dataToUpdateList.putExtra(AUTOR_KEY, infoCitaSelected.getAutor());
+//                                    setResult(Activity.RESULT_OK, dataToUpdateList);
+                                    SharedPreferences sp = getSharedPreferences("DATA_CITA_DELETE", 0);
+                                    SharedPreferences.Editor editor = sp.edit();
+                                    editor.putString("cita_del",infoCitaSelected.getCita());
+                                    editor.putString("autor_del",infoCitaSelected.getAutor());
+                                    editor.commit();
+                                    finish();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "No se pudieron borrar los datos", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                } else {
+                    String msgInfo = "Error getting documents: " + task.getException();
+                    Toast.makeText(getApplicationContext(), msgInfo, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
     // finalizamos el activity
     public void finishActivity(View view){
         finish();
     }
 
-//    private void updateDataView(InfoCita cita){
-//
-//    }
 }
