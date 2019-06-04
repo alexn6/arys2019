@@ -7,7 +7,6 @@ import android.os.Bundle;
 public class ListCitasActivity extends AppCompatActivity implements FragCita.OnFragmentInteractionListener{
 
     FragCita fragCita;
-    public static boolean CREADO_DATOS_COMPARTIDOS_DELETE = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
